@@ -1,0 +1,154 @@
+<!--
+  CARROSSEL INFINITO PARA GREATPAGES
+  Cole este código em: Configurações > Códigos Personalizados > Antes de </body>
+  Ou em um bloco de HTML personalizado
+-->
+
+<style>
+/* Carrossel Infinito - Estilos */
+.e_3452936_1_176606894637703064,
+.e_3452936_1_176607451724007308,
+.e_3452936_1_176607451169682368,
+.e_3452936_1_176607452198884158,
+.e_3452936_1_176607453708860861 {
+  display: none !important;
+}
+
+.gp-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+}
+
+.gp-carousel-track {
+  display: flex;
+  animation: gp-scroll 25s linear infinite;
+  width: max-content;
+  gap: 20px;
+}
+
+.gp-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.gp-carousel-item {
+  flex-shrink: 0;
+}
+
+.gp-carousel-item img {
+  max-height: 400px;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+@keyframes gp-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Fade nas bordas - opcional */
+.gp-carousel-wrapper::before,
+.gp-carousel-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gp-carousel-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+.gp-carousel-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+</style>
+
+<script>
+(function() {
+  // Classes das imagens de depoimentos
+  var classes = [
+    'e_3452936_1_176606894637703064',
+    'e_3452936_1_176607451724007308',
+    'e_3452936_1_176607451169682368',
+    'e_3452936_1_176607452198884158',
+    'e_3452936_1_176607453708860861'
+  ];
+
+  function criarCarrossel() {
+    var imagens = [];
+
+    // Buscar todas as imagens
+    classes.forEach(function(cls) {
+      var el = document.querySelector('.' + cls);
+      if (el) {
+        // Pegar a imagem dentro do elemento ou o próprio elemento se for img
+        var img = el.tagName === 'IMG' ? el : el.querySelector('img');
+        if (img) {
+          imagens.push(img.src || img.getAttribute('data-src'));
+        }
+      }
+    });
+
+    if (imagens.length === 0) {
+      console.log('Carrossel: Aguardando imagens...');
+      setTimeout(criarCarrossel, 1000);
+      return;
+    }
+
+    // Encontrar onde inserir o carrossel (pai do primeiro elemento)
+    var primeiroEl = document.querySelector('.' + classes[0]);
+    var container = primeiroEl.closest('[class*="row"]') || primeiroEl.parentElement.parentElement;
+
+    // Criar estrutura do carrossel
+    var wrapper = document.createElement('div');
+    wrapper.className = 'gp-carousel-wrapper';
+
+    var track = document.createElement('div');
+    track.className = 'gp-carousel-track';
+
+    // Adicionar imagens (2x para efeito infinito)
+    for (var i = 0; i < 2; i++) {
+      imagens.forEach(function(src) {
+        var item = document.createElement('div');
+        item.className = 'gp-carousel-item';
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Depoimento';
+        item.appendChild(img);
+        track.appendChild(item);
+      });
+    }
+
+    wrapper.appendChild(track);
+
+    // Inserir carrossel
+    container.parentElement.insertBefore(wrapper, container);
+
+    // Esconder elementos originais
+    container.style.display = 'none';
+
+    console.log('Carrossel criado com ' + imagens.length + ' imagens!');
+  }
+
+  // Aguardar página carregar
+  if (document.readyState === 'complete') {
+    setTimeout(criarCarrossel, 500);
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(criarCarrossel, 500);
+    });
+  }
+})();
+</script>
