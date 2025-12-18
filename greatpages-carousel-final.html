@@ -1,0 +1,87 @@
+<!--
+  CARROSSEL INFINITO - GREATPAGES
+  Cole em: Configurações > Códigos Personalizados > Antes de </body>
+
+  IMPORTANTE: Remova qualquer código de carrossel anterior antes de colar este!
+-->
+
+<style>
+/* Esconder elementos originais */
+.e_3452936_1_176606894637703064,
+.e_3452936_1_176607451724007308,
+.e_3452936_1_176607451169682368,
+.e_3452936_1_176607452198884158,
+.e_3452936_1_176607453708860861 {
+  display: none !important;
+}
+
+/* Carrossel */
+.gp-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+}
+
+.gp-carousel-track {
+  display: flex;
+  animation: gp-scroll 30s linear infinite;
+  width: max-content;
+  gap: 25px;
+}
+
+.gp-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.gp-carousel-item img {
+  max-height: 450px;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+@keyframes gp-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Fade nas bordas - fundo escuro */
+.gp-carousel-wrapper::before,
+.gp-carousel-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gp-carousel-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+.gp-carousel-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+</style>
+
+<div class="gp-carousel-wrapper">
+  <div class="gp-carousel-track">
+    <!-- Imagens originais -->
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176606894637703064.png" alt="Depoimento 1"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607451724007308.png" alt="Depoimento 2"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607451169682368.png" alt="Depoimento 3"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607452198884158.png" alt="Depoimento 4"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607453708860861.png" alt="Depoimento 5"></div>
+    <!-- Duplicado para loop infinito -->
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176606894637703064.png" alt="Depoimento 1"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607451724007308.png" alt="Depoimento 2"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607451169682368.png" alt="Depoimento 3"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607452198884158.png" alt="Depoimento 4"></div>
+    <div class="gp-carousel-item"><img src="https://pages.greatpages.com.br/lp.juliapaiva.com-teste/1766086953/imagens/mobile/3452936_1_176607453708860861.png" alt="Depoimento 5"></div>
+  </div>
+</div>
