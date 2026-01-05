@@ -74,26 +74,25 @@
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
+    left: -50%;
+    width: 50%;
     height: 100%;
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.6) 50%,
+      rgba(139, 0, 0, 0.08) 25%,
+      rgba(139, 0, 0, 0.15) 50%,
+      rgba(139, 0, 0, 0.08) 75%,
       transparent 100%
     );
-    animation: shine 2.5s ease-in-out infinite;
+    animation: shine 2s ease-in-out infinite;
     z-index: 1;
   }
 
   /* ===== ANIMAÇÃO KEYFRAMES DO SHINE ===== */
   @keyframes shine {
     0% {
-      left: -100%;
-    }
-    30% {
-      left: 100%;
+      left: -50%;
     }
     100% {
       left: 100%;
