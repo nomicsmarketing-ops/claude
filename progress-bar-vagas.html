@@ -86,19 +86,20 @@
   /* ===== TEXTO DA PARTE VAZIA ===== */
   .remaining-text {
     position: absolute;
-    right: 10px;
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 600;
     color: #FFFFFF;
     white-space: normal;
-    text-align: right;
+    text-align: center;
     line-height: 1.3;
-    max-width: 120px;
+    max-width: 140px;
     z-index: 1;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
   }
 
   /* ===== EFEITO SHINE (raio de luz branco) ===== */
@@ -162,54 +163,73 @@
   (function() {
     // ===== CONFIGURAÇÕES =====
     const DATA_INICIO = new Date(2026, 0, 5);  // 05 de Janeiro de 2026
-    const DATA_FINAL = new Date(2026, 0, 27);  // 27 de Janeiro de 2026
-    const PORCENTAGEM_INICIAL = 56;            // Valor inicial em 05/01
-    const PORCENTAGEM_FINAL = 100;             // Valor final em 27/01
-    const INCREMENTO_DIARIO = 2;               // 2% ao dia
+    const DATA_FINAL = new Date(2026, 0, 27, 19, 0, 0);  // 27 de Janeiro de 2026 às 19h
+    const PORCENTAGEM_INICIAL = 56;
+    const PORCENTAGEM_FINAL = 100;
+    const INCREMENTO_DIARIO = 2;
+    const VAGAS_INICIAL = 12;
+    const VAGAS_FINAL = 1;
 
     // ===== FUNÇÃO PARA CALCULAR A PORCENTAGEM ATUAL =====
     function calcularPorcentagem() {
       const hoje = new Date();
-
-      // Normaliza as datas para comparar apenas dia/mês/ano (ignora horas)
       const hojeNormalizado = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
       const inicioNormalizado = new Date(DATA_INICIO.getFullYear(), DATA_INICIO.getMonth(), DATA_INICIO.getDate());
       const finalNormalizado = new Date(DATA_FINAL.getFullYear(), DATA_FINAL.getMonth(), DATA_FINAL.getDate());
 
-      // Se for antes da data de início, retorna 56%
-      if (hojeNormalizado < inicioNormalizado) {
-        return PORCENTAGEM_INICIAL;
-      }
+      if (hojeNormalizado < inicioNormalizado) return PORCENTAGEM_INICIAL;
+      if (hojeNormalizado >= finalNormalizado) return PORCENTAGEM_FINAL;
 
-      // Se for na data final ou depois, retorna 100%
-      if (hojeNormalizado >= finalNormalizado) {
-        return PORCENTAGEM_FINAL;
-      }
-
-      // Calcula a diferença em dias desde o início
       const diferencaMs = hojeNormalizado - inicioNormalizado;
       const diasPassados = Math.floor(diferencaMs / (1000 * 60 * 60 * 24));
+      return Math.min(PORCENTAGEM_INICIAL + (diasPassados * INCREMENTO_DIARIO), PORCENTAGEM_FINAL);
+    }
 
-      // Calcula a porcentagem atual
-      let porcentagemAtual = PORCENTAGEM_INICIAL + (diasPassados * INCREMENTO_DIARIO);
+    // ===== FUNÇÃO PARA CALCULAR VAGAS RESTANTES =====
+    function calcularVagas() {
+      const hoje = new Date();
+      const inicioNormalizado = new Date(DATA_INICIO.getFullYear(), DATA_INICIO.getMonth(), DATA_INICIO.getDate());
 
-      // Garante que nunca ultrapasse 100%
-      return Math.min(porcentagemAtual, PORCENTAGEM_FINAL);
+      if (hoje < inicioNormalizado) return VAGAS_INICIAL;
+      if (hoje >= DATA_FINAL) return VAGAS_FINAL;
+
+      // Calcula o progresso total em milissegundos
+      const totalMs = DATA_FINAL - inicioNormalizado;
+      const passadoMs = hoje - inicioNormalizado;
+      const progresso = Math.min(passadoMs / totalMs, 1);
+
+      // Interpola de 12 para 1 vaga
+      const vagasRestantes = Math.round(VAGAS_INICIAL - (progresso * (VAGAS_INICIAL - VAGAS_FINAL)));
+      return Math.max(vagasRestantes, VAGAS_FINAL);
     }
 
     // ===== FUNÇÃO PARA ATUALIZAR A BARRA =====
     function atualizarBarra() {
       const porcentagem = calcularPorcentagem();
+      const vagas = calcularVagas();
       const barraFill = document.getElementById('progressFill');
       const textoProgresso = document.getElementById('progressText');
+      const textoRestante = document.getElementById('remainingText');
 
       if (barraFill && textoProgresso) {
         barraFill.style.width = porcentagem + '%';
         textoProgresso.textContent = porcentagem + '% das vagas preenchidas';
       }
+
+      if (textoRestante) {
+        // Atualiza o texto com o número de vagas
+        const textoVaga = vagas === 1 ? 'vaga' : 'vagas';
+        textoRestante.textContent = 'Restam apenas ' + vagas + ' ' + textoVaga + ' nesse valor';
+
+        // Centraliza o texto na área não preenchida
+        const areaPreenchida = porcentagem;
+        const areaVazia = 100 - areaPreenchida;
+        const centroAreaVazia = areaPreenchida + (areaVazia / 2);
+        textoRestante.style.left = centroAreaVazia + '%';
+      }
     }
 
-    // ===== INICIALIZA A BARRA QUANDO O DOM ESTIVER PRONTO =====
+    // ===== INICIALIZA =====
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', atualizarBarra);
     } else {
