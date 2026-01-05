@@ -86,14 +86,17 @@
   /* ===== TEXTO DA PARTE VAZIA ===== */
   .remaining-text {
     position: absolute;
-    right: 15px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: #FFFFFF;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: right;
+    line-height: 1.3;
+    max-width: 120px;
     z-index: 1;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   }
@@ -129,45 +132,18 @@
   }
 
   /* ===== RESPONSIVO PARA MOBILE ===== */
-  @media (max-width: 600px) {
-    .progress-bar-bg {
-      height: 34px;
-    }
-
+  @media (max-width: 500px) {
     .progress-text {
       font-size: 12px;
     }
 
     .remaining-text {
-      font-size: 9px;
-      right: 8px;
+      font-size: 10px;
+      max-width: 100px;
     }
 
     .progress-bar-fill {
-      min-width: 150px;
-    }
-  }
-
-  @media (max-width: 420px) {
-    .progress-bar-bg {
-      height: 42px;
-    }
-
-    .remaining-text {
-      white-space: normal;
-      text-align: center;
-      line-height: 1.2;
-      right: 8px;
-      width: 80px;
-      font-size: 9px;
-    }
-
-    .progress-bar-fill {
-      min-width: 110px;
-    }
-
-    .progress-text {
-      font-size: 11px;
+      min-width: 140px;
     }
   }
 </style>
