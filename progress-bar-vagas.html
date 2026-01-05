@@ -129,7 +129,7 @@
   }
 
   /* ===== RESPONSIVO PARA MOBILE ===== */
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     .progress-bar-bg {
       height: 34px;
     }
@@ -139,12 +139,26 @@
     }
 
     .remaining-text {
-      font-size: 10px;
-      right: 10px;
+      font-size: 9px;
+      right: 8px;
     }
 
     .progress-bar-fill {
-      min-width: 140px;
+      min-width: 150px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .remaining-text {
+      display: none;
+    }
+
+    .progress-bar-fill {
+      min-width: 120px;
+    }
+
+    .progress-text {
+      font-size: 11px;
     }
   }
 </style>
