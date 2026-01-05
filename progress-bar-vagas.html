@@ -29,25 +29,22 @@
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
-  /* ===== EFEITO DE CARREGAMENTO NO FUNDO (faixas animadas) ===== */
+  /* ===== EFEITO DE CARREGAMENTO NO FUNDO (listras finas inclinadas) ===== */
   .progress-bar-bg::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: -50%;
     width: 200%;
     height: 100%;
     background: repeating-linear-gradient(
-      90deg,
+      -45deg,
       transparent 0px,
-      transparent 20px,
-      rgba(255, 255, 255, 0.15) 20px,
-      rgba(255, 255, 255, 0.25) 40px,
-      rgba(255, 255, 255, 0.15) 60px,
-      transparent 60px,
-      transparent 80px
+      transparent 8px,
+      rgba(255, 255, 255, 0.08) 8px,
+      rgba(255, 255, 255, 0.08) 12px
     );
-    animation: loading-stripes 1s linear infinite;
+    animation: loading-stripes 0.8s linear infinite;
     z-index: 0;
   }
 
@@ -56,7 +53,7 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(80px);
+      transform: translateX(28px);
     }
   }
 
