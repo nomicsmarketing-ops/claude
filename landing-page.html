@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass Profissão Educador Financeiro | Nícolas Floriani</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+           VARIÁVEIS DE CORES - ALTERE AQUI PARA MUDAR TODA A PÁGINA
+           ═══════════════════════════════════════════════════════════ */
+        :root {
+            --cor-primaria: #e24538;      /* Vermelho - botões e destaques */
+            --cor-secundaria: #727bc7;    /* Roxo/Lilás - acentos */
+            --cor-fundo-escuro: #111333;  /* Azul escuro - backgrounds */
+            --cor-texto-claro: #ffffff;   /* Branco - textos em fundo escuro */
+            --cor-hover: #a62c03;         /* Vermelho escuro - hover dos botões */
+            --cor-fundo-claro: #d9dada;   /* Cinza claro - seções alternadas */
+            --cor-texto-escuro: #111333;  /* Texto em fundo claro */
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           RESET E ESTILOS BASE
+           ═══════════════════════════════════════════════════════════ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto-claro);
+            background-color: var(--cor-fundo-escuro);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           BOTÃO CTA PADRÃO
+           ═══════════════════════════════════════════════════════════ */
+        .btn-cta {
+            display: inline-block;
+            background: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            padding: 18px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn-cta:hover {
+            background: var(--cor-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(226, 69, 56, 0.4);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SEÇÃO 1: HERO
+           ═══════════════════════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(17, 19, 51, 0.95) 0%, rgba(17, 19, 51, 0.8) 100%),
+                        url('hero-background.jpg') center center / cover no-repeat;
+            /* SUBSTITUA 'hero-background.jpg' PELA SUA IMAGEM */
+            display: flex;
+            align-items: center;
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-supra {
+            display: inline-block;
+            background: rgba(114, 123, 199, 0.2);
+            border: 1px solid var(--cor-secundaria);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--cor-secundaria);
+        }
+
+        .hero-headline {
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero-headline .destaque {
+            color: var(--cor-primaria);
+        }
+
+        .hero-subheadline {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        /* Formulário */
+        .hero-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-form h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-form input {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--cor-texto-claro);
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .hero-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-form input:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+        }
+
+        .hero-form .btn-cta {
+            width: 100%;
+            padding: 18px;
+            font-size: 15px;
+        }
+
+        /* Imagem do Hero */
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SEÇÃO 2: PROVA SOCIAL (DEPOIMENTOS)
+           ═══════════════════════════════════════════════════════════ */
+        .prova-social {
+            background: var(--cor-texto-claro);
+            padding: 80px 0;
+        }
+
+        .prova-social .section-title {
+            color: var(--cor-texto-escuro);
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .prova-social .section-title span {
+            color: var(--cor-primaria);
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .depoimento-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .depoimento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .depoimento-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .depoimento-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--cor-secundaria);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .depoimento-nome {
+            font-weight: 700;
+            color: var(--cor-texto-escuro);
+            font-size: 16px;
+        }
+
+        .depoimento-texto {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .prova-social .btn-cta {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SEÇÃO 3: O QUE É EDUCADOR FINANCEIRO
+           ═══════════════════════════════════════════════════════════ */
+        .o-que-e {
+            background: var(--cor-fundo-escuro);
+            padding: 80px 0;
+        }
+
+        .o-que-e-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .o-que-e-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .o-que-e-content .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .o-que-e-content .section-title span {
+            color: var(--cor-primaria);
+        }
+
+        .o-que-e-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .destaque-box {
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, #5a63a8 100%);
+            padding: 25px 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid var(--cor-primaria);
+        }
+
+        .destaque-box p {
+            font-style: italic;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SEÇÃO 4: POR QUE SER EDUCADOR FINANCEIRO
+           ═══════════════════════════════════════════════════════════ */
+        .por-que {
+            background: var(--cor-fundo-claro);
+            padding: 80px 0;
+        }
+
+        .por-que-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .por-que-content .section-title {
+            color: var(--cor-texto-escuro);
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .por-que-content .section-title span {
+            color: var(--cor-primaria);
+        }
+
+        .por-que-content p {
+            color: #444;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .beneficios-lista {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .beneficios-lista li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .beneficios-lista li::before {
+            content: "✓";
+            background: var(--cor-primaria);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .por-que-promessa {
+            background: var(--cor-fundo-escuro);
+            color: var(--cor-texto-claro);
+            padding: 25px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .por-que-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SEÇÃO 5: CRONOGRAMA DAS AULAS
+           ═══════════════════════════════════════════════════════════ */
+        .cronograma {
+            background: var(--cor-fundo-escuro);
+            padding: 80px 0;
+        }
+
+        .cronograma .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .cronograma .section-title span {
+            color: var(--cor-primaria);
+        }
+
+        .aulas-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .aula-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .aula-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--cor-secundaria);
+            transform: translateY(-5px);
+        }
+
+        .aula-numero {
+            display: inline-block;
+            background: var(--cor-primaria);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .aula-data {
+            color: var(--cor-secundaria);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .aula-titulo {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .cronograma-aviso {
+            background: rgba(226, 69, 56, 0.1);
+            border: 1px solid var(--cor-primaria);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cronograma-aviso p {
+            color: var(--cor-primaria);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .cronograma .btn-cta {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SEÇÃO 6: QUEM É O NÍCOLAS
+           ═══════════════════════════════════════════════════════════ */
+        .quem-e {
+            background: linear-gradient(135deg, rgba(17, 19, 51, 0.95) 0%, rgba(17, 19, 51, 0.9) 100%),
+                        url('quem-e-background.jpg') center center / cover no-repeat;
+            /* SUBSTITUA 'quem-e-background.jpg' PELA SUA IMAGEM DE FUNDO */
+            padding: 80px 0;
+        }
+
+        .frase-impacto {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            font-style: italic;
+            margin-bottom: 60px;
+            color: var(--cor-secundaria);
+        }
+
+        .quem-e-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .quem-e-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .quem-e-content .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .quem-e-content .section-title span {
+            color: var(--cor-primaria);
+        }
+
+        .quem-e-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .numeros-autoridade {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .numero-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .numero-item::before {
+            content: "•";
+            color: var(--cor-primaria);
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SEÇÃO 7: CTA FINAL
+           ═══════════════════════════════════════════════════════════ */
+        .cta-final {
+            background: linear-gradient(135deg, var(--cor-fundo-escuro) 0%, #1a1d45 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-final .logo-masterclass {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .cta-final .headline-final {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .cta-final .headline-final span {
+            color: var(--cor-primaria);
+        }
+
+        .cta-final .dados-evento {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Cronômetro */
+        .countdown-container {
+            margin: 40px 0;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--cor-primaria);
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .cta-final .btn-cta {
+            font-size: 18px;
+            padding: 22px 50px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════ */
+        footer {
+            background: #0a0c1a;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           RESPONSIVIDADE
+           ═══════════════════════════════════════════════════════════ */
+        @media (max-width: 992px) {
+            .hero-container,
+            .o-que-e-container,
+            .por-que-container,
+            .quem-e-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-image {
+                order: -1;
+                text-align: center;
+            }
+
+            .hero-image img {
+                max-width: 350px;
+            }
+
+            .depoimentos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .aulas-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-headline {
+                font-size: 30px;
+            }
+
+            .section-title,
+            .o-que-e-content .section-title,
+            .por-que-content .section-title,
+            .quem-e-content .section-title,
+            .cronograma .section-title {
+                font-size: 28px;
+            }
+
+            .cta-final .headline-final {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .numeros-autoridade {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown {
+                gap: 15px;
+            }
+
+            .countdown-number {
+                font-size: 36px;
+            }
+
+            .hero-headline {
+                font-size: 26px;
+            }
+
+            .frase-impacto {
+                font-size: 24px;
+            }
+
+            .btn-cta {
+                padding: 15px 30px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 20px 0;
+            }
+
+            .hero-form {
+                padding: 20px;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+            }
+
+            .countdown-item {
+                width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SEÇÃO 1: HERO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- SUPRA - Altere o texto do evento -->
+                <span class="hero-supra">MASTERCLASS | 03 a 08 de março, às 20h</span>
+
+                <!-- HEADLINE - Altere seu título principal -->
+                <h1 class="hero-headline">
+                    Se você tem familiaridade com finanças…<br>
+                    <span class="destaque">Descubra como faturar de R$2.000 a R$10.000 por mês</span>
+                    ajudando famílias a organizarem suas finanças.
+                </h1>
+
+                <!-- SUBHEADLINE - Altere a promessa secundária -->
+                <p class="hero-subheadline">
+                    <strong>4 aulas ao vivo</strong> onde vou te mostrar o passo a passo para conseguir seus primeiros clientes em 30 dias, sem precisar de diploma, sem depender de milhares de seguidores, e mesmo que você ache que "não sabe o suficiente".
+                </p>
+
+                <!-- FORMULÁRIO - Configure a integração com sua ferramenta -->
+                <div class="hero-form">
+                    <h3>Deixe seus dados para participar:</h3>
+                    <form action="#" method="POST">
+                        <!-- Altere o action para sua URL de integração -->
+                        <input type="email" name="email" placeholder="Digite seu melhor e-mail" required>
+                        <input type="tel" name="whatsapp" placeholder="Digite seu WhatsApp" required>
+                        <button type="submit" class="btn-cta">Garantir Minha Vaga Gratuita</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- IMAGEM DO HERO - Substitua pela sua imagem -->
+            <div class="hero-image">
+                <img src="hero-nicolas.jpg" alt="Nícolas Floriani">
+                <!-- SUBSTITUA 'hero-nicolas.jpg' PELA SUA IMAGEM -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SEÇÃO 2: PROVA SOCIAL (DEPOIMENTOS)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="prova-social" id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">
+                Eles decidiram mudar de vida.<br>
+                <span>E foi isso que aconteceu:</span>
+            </h2>
+
+            <!-- GRID DE DEPOIMENTOS - Adicione seus depoimentos reais -->
+            <div class="depoimentos-grid">
+                <!-- Depoimento 1 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">M</div>
+                        <span class="depoimento-nome">Maria Silva</span>
+                    </div>
+                    <p class="depoimento-texto">
+                        "Adicione aqui o depoimento real do seu aluno. Conte a transformação que ele viveu após aplicar seu método."
+                    </p>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">J</div>
+                        <span class="depoimento-nome">João Santos</span>
+                    </div>
+                    <p class="depoimento-texto">
+                        "Adicione aqui o depoimento real do seu aluno. Conte a transformação que ele viveu após aplicar seu método."
+                    </p>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">A</div>
+                        <span class="depoimento-nome">Ana Oliveira</span>
+                    </div>
+                    <p class="depoimento-texto">
+                        "Adicione aqui o depoimento real do seu aluno. Conte a transformação que ele viveu após aplicar seu método."
+                    </p>
+                </div>
+
+                <!-- Depoimento 4 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">P</div>
+                        <span class="depoimento-nome">Pedro Costa</span>
+                    </div>
+                    <p class="depoimento-texto">
+                        "Adicione aqui o depoimento real do seu aluno. Conte a transformação que ele viveu após aplicar seu método."
+                    </p>
+                </div>
+
+                <!-- Depoimento 5 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">C</div>
+                        <span class="depoimento-nome">Carla Mendes</span>
+                    </div>
+                    <p class="depoimento-texto">
+                        "Adicione aqui o depoimento real do seu aluno. Conte a transformação que ele viveu após aplicar seu método."
+                    </p>
+                </div>
+
+                <!-- Depoimento 6 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">R</div>
+                        <span class="depoimento-nome">Ricardo Lima</span>
+                    </div>
+                    <p class="depoimento-texto">
+                        "Adicione aqui o depoimento real do seu aluno. Conte a transformação que ele viveu após aplicar seu método."
+                    </p>
+                </div>
+            </div>
+
+            <a href="#inicio" class="btn-cta">Quero Ter Resultados Assim Também</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SEÇÃO 3: O QUE É EDUCADOR FINANCEIRO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="o-que-e" id="o-que-e">
+        <div class="container">
+            <div class="o-que-e-container">
+                <div class="o-que-e-image">
+                    <!-- SUBSTITUA PELA SUA IMAGEM -->
+                    <img src="educador-financeiro.jpg" alt="Educador Financeiro em ação">
+                </div>
+
+                <div class="o-que-e-content">
+                    <h2 class="section-title">
+                        O que é um <span>Educador Financeiro</span>?
+                    </h2>
+
+                    <p>
+                        O Educador Financeiro é o profissional que pega o cliente pela mão e ajuda ele a organizar a vida financeira. É diferente do consultor de investimentos que indica onde colocar dinheiro. O educador ensina as pessoas a controlarem suas finanças, saírem de dívidas e planejarem o futuro.
+                    </p>
+
+                    <p>
+                        Pensa o seguinte: <strong>80% dos brasileiros não tem organização financeira.</strong> São famílias que ganham bem, mas não sabem pra onde o dinheiro vai. Gente que está endividada e não sabe como sair. Pessoas que querem comprar a casa própria mas não conseguem juntar.
+                    </p>
+
+                    <p>
+                        Esse é o seu mercado. São milhões de pessoas precisando de ajuda, e poucas pessoas capacitadas para ajudar. É como ser personal trainer das finanças.
+                    </p>
+
+                    <div class="destaque-box">
+                        <p>"O papel de ensinar como a pessoa deve administrar o dinheiro dela e tomar boas decisões financeiras é do Educador."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SEÇÃO 4: POR QUE SER EDUCADOR FINANCEIRO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="por-que" id="por-que">
+        <div class="container">
+            <div class="por-que-container">
+                <div class="por-que-content">
+                    <h2 class="section-title">
+                        Por que essa profissão pode <span>mudar sua vida</span>?
+                    </h2>
+
+                    <p>
+                        Vamos supor que você atenda apenas <strong>10 famílias por mês</strong>. Cada consultoria custa R$500. São R$5.000. Agora imagina que 4 dessas famílias contratam seu acompanhamento mensal por R$300. São mais de R$1.200 recorrentes.
+                    </p>
+
+                    <p>
+                        Em poucos meses você pode estar faturando <strong>R$6.000, R$8.000, R$10.000</strong>, trabalhando de casa, com agenda flexível, tendo tempo para sua família, fazendo algo que transforma vidas de verdade.
+                    </p>
+
+                    <ul class="beneficios-lista">
+                        <li>Trabalhe de qualquer lugar (consultoria online)</li>
+                        <li>Monte sua agenda com flexibilidade total</li>
+                        <li>Tenha tempo para sua família e seus filhos</li>
+                        <li>Construa renda recorrente com acompanhamentos mensais</li>
+                        <li>Não precisa de diploma específico para atuar</li>
+                        <li>Comece sem precisar de milhares de seguidores</li>
+                        <li>Faça a diferença real na vida das famílias que atender</li>
+                    </ul>
+
+                    <div class="por-que-promessa">
+                        E o melhor: você pode fazer tudo isso já no primeiro ano de trabalho como Educador Financeiro.
+                    </div>
+                </div>
+
+                <div class="por-que-image">
+                    <!-- SUBSTITUA PELA SUA IMAGEM -->
+                    <img src="beneficios.jpg" alt="Benefícios de ser Educador Financeiro">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SEÇÃO 5: CRONOGRAMA DAS AULAS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="cronograma" id="cronograma">
+        <div class="container">
+            <h2 class="section-title">
+                O que você vai aprender na <span>Masterclass</span>:
+            </h2>
+
+            <div class="aulas-container">
+                <!-- AULA 1 -->
+                <div class="aula-card">
+                    <span class="aula-numero">AULA 1</span>
+                    <p class="aula-data">Terça, 03/03 às 19h</p>
+                    <h3 class="aula-titulo">Educador Financeiro: A Profissão de R$10k/mês ou mais que 80% dos brasileiros precisam.</h3>
+                </div>
+
+                <!-- AULA 2 -->
+                <div class="aula-card">
+                    <span class="aula-numero">AULA 2</span>
+                    <p class="aula-data">Quarta, 04/03 às 19h</p>
+                    <h3 class="aula-titulo">Como Educadores Financeiros Cobram de R$500 a R$4.000 por Cliente</h3>
+                </div>
+
+                <!-- AULA 3 -->
+                <div class="aula-card">
+                    <span class="aula-numero">AULA 3</span>
+                    <p class="aula-data">Quinta, 05/03 às 19h</p>
+                    <h3 class="aula-titulo">Os 5 Passos Cruciais para Fechar Seu Primeiro Cliente como Educador Financeiro</h3>
+                </div>
+
+                <!-- AULA 4 -->
+                <div class="aula-card">
+                    <span class="aula-numero">AULA 4</span>
+                    <p class="aula-data">Domingo, 08/03 às 19h</p>
+                    <h3 class="aula-titulo">O Plano de 90 dias para faturar seus primeiros R$ 10.000 como Educador Financeiro</h3>
+                </div>
+            </div>
+
+            <div class="cronograma-aviso">
+                <p>⚠️ As aulas NÃO ficarão disponíveis depois. Assista ao vivo.</p>
+            </div>
+
+            <a href="#inicio" class="btn-cta">Reservar Minha Vaga Gratuita</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SEÇÃO 6: QUEM É O NÍCOLAS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="quem-e" id="quem-e">
+        <div class="container">
+            <p class="frase-impacto">
+                "Se você não controla o dinheiro, ele é quem te controla."
+            </p>
+
+            <div class="quem-e-container">
+                <div class="quem-e-image">
+                    <!-- SUBSTITUA PELA SUA IMAGEM -->
+                    <img src="nicolas-floriani.jpg" alt="Nícolas Floriani">
+                </div>
+
+                <div class="quem-e-content">
+                    <h2 class="section-title">
+                        Quem vai <span>te ensinar</span>?
+                    </h2>
+
+                    <p>
+                        <strong>Nícolas Floriani</strong> é o fundador do Grupo Karppa e um dos maiores especialistas em formação de Educadores Financeiros do Brasil.
+                    </p>
+
+                    <p>
+                        Ao longo de quase 10 anos na profissão, Nícolas saiu de educador individual atendendo famílias para criar uma escola completa que já formou centenas de profissionais. Ele próprio chegou a faturar R$50.000 por mês apenas com consultorias, antes de decidir ensinar outras pessoas a fazerem o mesmo.
+                    </p>
+
+                    <p>
+                        Sua metodologia é conhecida por ser extremamente prática: nada de teoria vazia, só o que funciona no mundo real. Cada aula vem com ferramentas, scripts e modelos prontos para usar.
+                    </p>
+
+                    <div class="numeros-autoridade">
+                        <div class="numero-item">Quase 10 anos de experiência</div>
+                        <div class="numero-item">Chegou a R$50.000/mês</div>
+                        <div class="numero-item">Centenas de alunos formados</div>
+                        <div class="numero-item">Metodologia validada</div>
+                    </div>
+
+                    <a href="#inicio" class="btn-cta">Quero Aprender com o Nícolas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SEÇÃO 7: CTA FINAL COM CRONÔMETRO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="cta-final" id="inscricao">
+        <div class="container">
+            <p class="logo-masterclass">Masterclass</p>
+
+            <h2 class="headline-final">
+                Profissão <span>Educador Financeiro</span>
+            </h2>
+
+            <p class="dados-evento">
+                03 a 08 de março | 4 aulas ao vivo | 100% gratuito
+            </p>
+
+            <!-- CRONÔMETRO - Altere a data alvo no JavaScript -->
+            <div class="countdown-container">
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="dias">00</span>
+                        <span class="countdown-label">Dias</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="horas">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutos">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="segundos">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#inicio" class="btn-cta">Garantir Minha Vaga Agora</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════════ -->
+    <footer>
+        <div class="container">
+            <!-- ALTERE PARA SEU NOME/EMPRESA -->
+            <p>&copy; 2025 Nícolas Floriani. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         JAVASCRIPT - CRONÔMETRO
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+        // ALTERE A DATA DO EVENTO AQUI (formato: ano, mês-1, dia, hora, minuto)
+        // Mês é 0-indexado: Janeiro=0, Fevereiro=1, Março=2, etc.
+        const dataEvento = new Date(2025, 2, 3, 19, 0, 0); // 03 de Março de 2025 às 19h
+
+        function atualizarCronometro() {
+            const agora = new Date();
+            const diferenca = dataEvento - agora;
+
+            if (diferenca > 0) {
+                const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+                document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
+                document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
+                document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+                document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+            } else {
+                // Evento começou - você pode personalizar esta mensagem
+                document.getElementById('dias').textContent = '00';
+                document.getElementById('horas').textContent = '00';
+                document.getElementById('minutos').textContent = '00';
+                document.getElementById('segundos').textContent = '00';
+            }
+        }
+
+        // Atualiza imediatamente e depois a cada segundo
+        atualizarCronometro();
+        setInterval(atualizarCronometro, 1000);
+    </script>
+
+</body>
+</html>
