@@ -70,7 +70,7 @@
         width: 18px;
         height: 18px;
         margin-right: 10px;
-        accent-color: #00a8ff;
+        accent-color: #e24538;
         cursor: pointer;
         flex-shrink: 0;
     }
@@ -95,7 +95,7 @@
 
     .survey-input:focus {
         outline: none;
-        border-color: #00a8ff;
+        border-color: #e24538;
     }
 
     .survey-input::placeholder {
@@ -137,13 +137,13 @@
     }
 
     .btn-next {
-        background: #00a8ff;
+        background: #e24538;
         color: white;
         flex: 1;
     }
 
     .btn-next:hover {
-        background: #0095e0;
+        background: #c93c30;
         transform: translateY(-1px);
     }
 
@@ -151,14 +151,6 @@
         background: #ccc;
         cursor: not-allowed;
         transform: none;
-    }
-
-    .btn-next.btn-submit {
-        background: #25d366;
-    }
-
-    .btn-next.btn-submit:hover {
-        background: #20bd5a;
     }
 
     .survey-error {
@@ -197,72 +189,52 @@
         to { transform: rotate(360deg); }
     }
 
-    /* Modal */
-    .survey-modal-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
+    /* Mensagem de Obrigado */
+    .survey-thanks {
         display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        padding: 20px;
-    }
-
-    .survey-modal-bg.show {
-        display: flex;
-    }
-
-    .survey-modal {
-        background: #fff;
-        border-radius: 16px;
-        padding: 35px;
-        max-width: 450px;
-        width: 100%;
         text-align: center;
-        border: 4px solid #ffd700;
+        padding: 20px 0;
     }
 
-    .survey-modal h2 {
-        font-size: 1.3rem;
+    .survey-thanks.show {
+        display: block;
+        animation: surveyFade 0.3s ease;
+    }
+
+    .survey-thanks h2 {
+        font-size: 1.5rem;
         font-weight: 700;
         color: #1a1a1a;
         margin-bottom: 15px;
     }
 
-    .survey-modal p {
+    .survey-thanks p {
         color: #555;
-        font-size: 0.95rem;
+        font-size: 1rem;
         line-height: 1.5;
         margin-bottom: 25px;
     }
 
-    .btn-whatsapp {
+    .btn-cta {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        background: #25d366;
+        background: #e24538;
         color: white;
         padding: 16px 24px;
         border-radius: 50px;
         text-decoration: none;
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 1rem;
         width: 100%;
+        transition: all 0.2s;
     }
 
-    .btn-whatsapp:hover {
-        background: #20bd5a;
+    .btn-cta:hover {
+        background: #c93c30;
         color: white;
-    }
-
-    .btn-whatsapp svg {
-        width: 22px;
-        height: 22px;
+        transform: translateY(-1px);
     }
 
     @media (max-width: 480px) {
@@ -279,35 +251,23 @@
     <form id="surveyForm">
         <!-- Pergunta 1 -->
         <div class="survey-q active" data-q="1">
-            <h2>Quantos anos você tem?</h2>
+            <h2>Como você descreveria seu conhecimento sobre finanças pessoais?</h2>
             <div class="survey-opts">
                 <div class="survey-opt">
-                    <input type="radio" name="idade" id="idade1" value="Menos de 18 anos">
-                    <label for="idade1">Menos de 18 anos</label>
+                    <input type="radio" name="conhecimento_financas" id="q1a" value="Tenho bastante conhecimento e já ajudo outras pessoas">
+                    <label for="q1a">Tenho bastante conhecimento e já ajudo outras pessoas</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="idade" id="idade2" value="Entre 18 e 25 anos">
-                    <label for="idade2">Entre 18 e 25 anos</label>
+                    <input type="radio" name="conhecimento_financas" id="q1b" value="Tenho conhecimento intermediário, organizo bem minhas finanças">
+                    <label for="q1b">Tenho conhecimento intermediário, organizo bem minhas finanças</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="idade" id="idade3" value="Entre 26 e 30 anos">
-                    <label for="idade3">Entre 26 e 30 anos</label>
+                    <input type="radio" name="conhecimento_financas" id="q1c" value="Tenho conhecimento básico, ainda estou aprendendo">
+                    <label for="q1c">Tenho conhecimento básico, ainda estou aprendendo</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="idade" id="idade4" value="Entre 31 e 35 anos">
-                    <label for="idade4">Entre 31 e 35 anos</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="radio" name="idade" id="idade5" value="Entre 36 e 40 anos">
-                    <label for="idade5">Entre 36 e 40 anos</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="radio" name="idade" id="idade6" value="Entre 41 e 50 anos">
-                    <label for="idade6">Entre 41 e 50 anos</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="radio" name="idade" id="idade7" value="Acima de 50 anos">
-                    <label for="idade7">Acima de 50 anos</label>
+                    <input type="radio" name="conhecimento_financas" id="q1d" value="Não tenho conhecimento, estou começando do zero">
+                    <label for="q1d">Não tenho conhecimento, estou começando do zero</label>
                 </div>
             </div>
             <p class="survey-error">Por favor, selecione uma opção.</p>
@@ -315,19 +275,19 @@
 
         <!-- Pergunta 2 -->
         <div class="survey-q" data-q="2">
-            <h2>Qual é o seu gênero?</h2>
+            <h2>Você já conhecia a profissão de Educador Financeiro antes de conhecer o Nícolas?</h2>
             <div class="survey-opts">
                 <div class="survey-opt">
-                    <input type="radio" name="genero" id="genero1" value="Masculino">
-                    <label for="genero1">Masculino</label>
+                    <input type="radio" name="conhecia_profissao" id="q2a" value="Sim, já conhecia e tenho interesse em atuar">
+                    <label for="q2a">Sim, já conhecia e tenho interesse em atuar</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="genero" id="genero2" value="Feminino">
-                    <label for="genero2">Feminino</label>
+                    <input type="radio" name="conhecia_profissao" id="q2b" value="Sim, já tinha ouvido falar mas não sabia como funcionava">
+                    <label for="q2b">Sim, já tinha ouvido falar mas não sabia como funcionava</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="genero" id="genero3" value="Prefiro não informar">
-                    <label for="genero3">Prefiro não informar</label>
+                    <input type="radio" name="conhecia_profissao" id="q2c" value="Não, estou descobrindo agora">
+                    <label for="q2c">Não, estou descobrindo agora</label>
                 </div>
             </div>
             <p class="survey-error">Por favor, selecione uma opção.</p>
@@ -335,34 +295,43 @@
 
         <!-- Pergunta 3 -->
         <div class="survey-q" data-q="3">
-            <h2>Qual é a sua profissão atual?</h2>
-            <input type="text" class="survey-input" name="profissao" placeholder="Ex: Empresário, Designer, Estudante...">
-            <p class="survey-error">Por favor, preencha este campo.</p>
+            <h2>Você já trabalha com algo relacionado a finanças?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="experiencia_financas" id="q3a" value="Sim, trabalho na área financeira (banco, contabilidade, análise, etc.)">
+                    <label for="q3a">Sim, trabalho na área financeira (banco, contabilidade, análise, etc.)</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="experiencia_financas" id="q3b" value="Não, mas tenho conhecimento e já ajudo pessoas informalmente">
+                    <label for="q3b">Não, mas tenho conhecimento e já ajudo pessoas informalmente</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="experiencia_financas" id="q3c" value="Não, estou começando do zero">
+                    <label for="q3c">Não, estou começando do zero</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
         </div>
 
         <!-- Pergunta 4 -->
         <div class="survey-q" data-q="4">
-            <h2>Qual é a sua faixa de renda mensal?</h2>
+            <h2>Qual é o seu momento profissional hoje?</h2>
             <div class="survey-opts">
                 <div class="survey-opt">
-                    <input type="radio" name="renda" id="renda1" value="Até R$ 2.000">
-                    <label for="renda1">Até R$ 2.000</label>
+                    <input type="radio" name="momento_profissional" id="q4a" value="CLT (funcionário de empresa)">
+                    <label for="q4a">CLT (funcionário de empresa)</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="renda" id="renda2" value="R$ 2.001 a R$ 5.000">
-                    <label for="renda2">R$ 2.001 a R$ 5.000</label>
+                    <input type="radio" name="momento_profissional" id="q4b" value="Autônomo ou Profissional Liberal">
+                    <label for="q4b">Autônomo ou Profissional Liberal</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="renda" id="renda3" value="R$ 5.001 a R$ 10.000">
-                    <label for="renda3">R$ 5.001 a R$ 10.000</label>
+                    <input type="radio" name="momento_profissional" id="q4c" value="Empresário ou MEI">
+                    <label for="q4c">Empresário ou MEI</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="renda" id="renda4" value="R$ 10.001 a R$ 20.000">
-                    <label for="renda4">R$ 10.001 a R$ 20.000</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="radio" name="renda" id="renda5" value="Acima de R$ 20.000">
-                    <label for="renda5">Acima de R$ 20.000</label>
+                    <input type="radio" name="momento_profissional" id="q4d" value="Desempregado ou em transição">
+                    <label for="q4d">Desempregado ou em transição</label>
                 </div>
             </div>
             <p class="survey-error">Por favor, selecione uma opção.</p>
@@ -370,19 +339,23 @@
 
         <!-- Pergunta 5 -->
         <div class="survey-q" data-q="5">
-            <h2>Qual é o seu nível de experiência?</h2>
+            <h2>Qual seu principal objetivo ao conhecer mais sobre Educação Financeira como carreira?</h2>
             <div class="survey-opts">
                 <div class="survey-opt">
-                    <input type="radio" name="experiencia" id="exp1" value="Iniciante">
-                    <label for="exp1">Iniciante - Estou começando agora</label>
+                    <input type="radio" name="objetivo" id="q5a" value="Quero fazer uma transição de carreira">
+                    <label for="q5a">Quero fazer uma transição de carreira</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="experiencia" id="exp2" value="Intermediário">
-                    <label for="exp2">Intermediário - Já tenho algum conhecimento</label>
+                    <input type="radio" name="objetivo" id="q5b" value="Quero ter meu próprio negócio">
+                    <label for="q5b">Quero ter meu próprio negócio</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="experiencia" id="exp3" value="Avançado">
-                    <label for="exp3">Avançado - Já atuo na área</label>
+                    <input type="radio" name="objetivo" id="q5c" value="Quero fazer uma renda extra">
+                    <label for="q5c">Quero fazer uma renda extra</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="objetivo" id="q5d" value="Estou apenas conhecendo, sem compromisso">
+                    <label for="q5d">Estou apenas conhecendo, sem compromisso</label>
                 </div>
             </div>
             <p class="survey-error">Por favor, selecione uma opção.</p>
@@ -390,83 +363,79 @@
 
         <!-- Pergunta 6 -->
         <div class="survey-q" data-q="6">
-            <h2>Qual é o seu principal objetivo?</h2>
+            <h2>O que mais te incomoda na sua vida profissional hoje?</h2>
             <div class="survey-opts">
                 <div class="survey-opt">
-                    <input type="radio" name="objetivo" id="obj1" value="Aumentar minha renda">
-                    <label for="obj1">Aumentar minha renda</label>
+                    <input type="radio" name="dor_principal" id="q6a" value="Me esforço muito e ganho pouco">
+                    <label for="q6a">Me esforço muito e ganho pouco</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="objetivo" id="obj2" value="Começar um negócio próprio">
-                    <label for="obj2">Começar um negócio próprio</label>
+                    <input type="radio" name="dor_principal" id="q6b" value="Não tenho liberdade de tempo ou dinheiro">
+                    <label for="q6b">Não tenho liberdade de tempo ou dinheiro</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="objetivo" id="obj3" value="Mudar de carreira">
-                    <label for="obj3">Mudar de carreira</label>
+                    <input type="radio" name="dor_principal" id="q6c" value="Estou estagnado, sem perspectiva de crescimento">
+                    <label for="q6c">Estou estagnado, sem perspectiva de crescimento</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="objetivo" id="obj4" value="Escalar meu negócio atual">
-                    <label for="obj4">Escalar meu negócio atual</label>
+                    <input type="radio" name="dor_principal" id="q6d" value="Trabalho com algo que não me realiza">
+                    <label for="q6d">Trabalho com algo que não me realiza</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="objetivo" id="obj5" value="Apenas aprender algo novo">
-                    <label for="obj5">Apenas aprender algo novo</label>
+                    <input type="radio" name="dor_principal" id="q6e" value="Estou satisfeito com minha profissão atual">
+                    <label for="q6e">Estou satisfeito com minha profissão atual</label>
                 </div>
             </div>
             <p class="survey-error">Por favor, selecione uma opção.</p>
         </div>
 
-        <!-- Pergunta 7 (múltipla escolha) -->
+        <!-- Pergunta 7 -->
         <div class="survey-q" data-q="7">
-            <h2>Quais são seus maiores desafios? <small>(Selecione todos que se aplicam)</small></h2>
+            <h2>Qual é a sua renda mensal atual?</h2>
             <div class="survey-opts">
                 <div class="survey-opt">
-                    <input type="checkbox" name="desafios" id="des1" value="Falta de tempo">
-                    <label for="des1">Falta de tempo</label>
+                    <input type="radio" name="renda" id="q7a" value="Até R$3.000">
+                    <label for="q7a">Até R$3.000</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="checkbox" name="desafios" id="des2" value="Falta de dinheiro para investir">
-                    <label for="des2">Falta de dinheiro para investir</label>
+                    <input type="radio" name="renda" id="q7b" value="Entre R$3.000 e R$5.000">
+                    <label for="q7b">Entre R$3.000 e R$5.000</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="checkbox" name="desafios" id="des3" value="Não sei por onde começar">
-                    <label for="des3">Não sei por onde começar</label>
+                    <input type="radio" name="renda" id="q7c" value="Entre R$5.000 e R$8.000">
+                    <label for="q7c">Entre R$5.000 e R$8.000</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="checkbox" name="desafios" id="des4" value="Medo de arriscar">
-                    <label for="des4">Medo de arriscar</label>
+                    <input type="radio" name="renda" id="q7d" value="Acima de R$8.000">
+                    <label for="q7d">Acima de R$8.000</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="checkbox" name="desafios" id="des5" value="Falta de conhecimento técnico">
-                    <label for="des5">Falta de conhecimento técnico</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="checkbox" name="desafios" id="des6" value="Dificuldade em vender">
-                    <label for="des6">Dificuldade em vender</label>
+                    <input type="radio" name="renda" id="q7e" value="Prefiro não responder">
+                    <label for="q7e">Prefiro não responder</label>
                 </div>
             </div>
-            <p class="survey-error">Por favor, selecione pelo menos uma opção.</p>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
         </div>
 
         <!-- Pergunta 8 -->
         <div class="survey-q" data-q="8">
-            <h2>Quantas horas por semana pode dedicar?</h2>
+            <h2>Há quanto tempo você conhece o Nícolas Floriani?</h2>
             <div class="survey-opts">
                 <div class="survey-opt">
-                    <input type="radio" name="disponibilidade" id="disp1" value="Menos de 5 horas">
-                    <label for="disp1">Menos de 5 horas</label>
+                    <input type="radio" name="tempo_conhece" id="q8a" value="Menos de 1 semana">
+                    <label for="q8a">Menos de 1 semana</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="disponibilidade" id="disp2" value="5 a 10 horas">
-                    <label for="disp2">5 a 10 horas</label>
+                    <input type="radio" name="tempo_conhece" id="q8b" value="Menos de 1 mês">
+                    <label for="q8b">Menos de 1 mês</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="disponibilidade" id="disp3" value="10 a 20 horas">
-                    <label for="disp3">10 a 20 horas</label>
+                    <input type="radio" name="tempo_conhece" id="q8c" value="Entre 1 e 3 meses">
+                    <label for="q8c">Entre 1 e 3 meses</label>
                 </div>
                 <div class="survey-opt">
-                    <input type="radio" name="disponibilidade" id="disp4" value="Mais de 20 horas">
-                    <label for="disp4">Mais de 20 horas</label>
+                    <input type="radio" name="tempo_conhece" id="q8d" value="Mais de 3 meses">
+                    <label for="q8d">Mais de 3 meses</label>
                 </div>
             </div>
             <p class="survey-error">Por favor, selecione uma opção.</p>
@@ -474,32 +443,8 @@
 
         <!-- Pergunta 9 -->
         <div class="survey-q" data-q="9">
-            <h2>Você investiria em um treinamento completo?</h2>
-            <div class="survey-opts">
-                <div class="survey-opt">
-                    <input type="radio" name="investimento" id="inv1" value="Sim, com certeza">
-                    <label for="inv1">Sim, com certeza</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="radio" name="investimento" id="inv2" value="Sim, se o valor for acessível">
-                    <label for="inv2">Sim, se o valor for acessível</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="radio" name="investimento" id="inv3" value="Talvez, preciso avaliar">
-                    <label for="inv3">Talvez, preciso avaliar</label>
-                </div>
-                <div class="survey-opt">
-                    <input type="radio" name="investimento" id="inv4" value="Não no momento">
-                    <label for="inv4">Não no momento</label>
-                </div>
-            </div>
-            <p class="survey-error">Por favor, selecione uma opção.</p>
-        </div>
-
-        <!-- Pergunta 10 -->
-        <div class="survey-q" data-q="10">
-            <h2>O que espera alcançar nos próximos 12 meses?</h2>
-            <textarea class="survey-input" name="expectativas" placeholder="Descreva seus objetivos..."></textarea>
+            <h2>Se você pudesse mudar UMA coisa na sua vida nos próximos 3 meses, o que seria?</h2>
+            <textarea class="survey-input" name="sonho_desejo" placeholder="Digite sua resposta aqui..." maxlength="200"></textarea>
             <p class="survey-error">Por favor, preencha este campo.</p>
         </div>
 
@@ -511,17 +456,12 @@
             </button>
         </div>
     </form>
-</div>
 
-<!-- Modal -->
-<div class="survey-modal-bg" id="surveyModal">
-    <div class="survey-modal">
+    <!-- Mensagem de Obrigado -->
+    <div class="survey-thanks" id="surveyThanks">
         <h2>Obrigado por responder!</h2>
-        <p>Para completar a sua inscrição e participar do curso gratuito, clique no botão abaixo e confirme sua inscrição pelo WhatsApp.</p>
-        <a href="https://wa.me/5511999999999?text=Quero%20confirmar%20minha%20inscri%C3%A7%C3%A3o" class="btn-whatsapp" target="_blank">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            CONFIRMAR INSCRIÇÃO
-        </a>
+        <p>Para completar a sua inscrição e participar da masterclass gratuita, clique no botão abaixo:</p>
+        <a href="https://sndflw.com/i/masterclasseducadorfin" class="btn-cta">QUERO PARTICIPAR DA MASTERCLASS</a>
     </div>
 </div>
 
@@ -533,7 +473,7 @@
     const questions = document.querySelectorAll('.survey-q');
     const btnNext = document.getElementById('btnNext');
     const btnBack = document.getElementById('btnBack');
-    const modal = document.getElementById('surveyModal');
+    const thanks = document.getElementById('surveyThanks');
 
     let current = 1;
     const total = questions.length;
@@ -543,7 +483,6 @@
         document.querySelector('[data-q="'+n+'"]').classList.add('active');
         btnBack.disabled = n === 1;
         btnNext.querySelector('.btn-text').textContent = n === total ? 'ENVIAR' : 'PRÓXIMA';
-        btnNext.classList.toggle('btn-submit', n === total);
     }
 
     function validate() {
@@ -569,9 +508,6 @@
     function collect() {
         const data = {};
         form.querySelectorAll('input[type="radio"]:checked').forEach(r => data[r.name] = r.value);
-        const desafios = [];
-        form.querySelectorAll('input[type="checkbox"]:checked').forEach(c => desafios.push(c.value));
-        if (desafios.length) data.desafios = desafios;
         form.querySelectorAll('.survey-input').forEach(i => { if(i.value.trim()) data[i.name] = i.value.trim(); });
         data.data_envio = new Date().toISOString();
         return data;
@@ -599,7 +535,8 @@
             loading(true);
             try { await fetch(WEBHOOK_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(collect()) }); } catch(e) {}
             loading(false);
-            modal.classList.add('show');
+            form.style.display = 'none';
+            thanks.classList.add('show');
         }
     });
 
