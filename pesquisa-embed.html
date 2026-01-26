@@ -1,326 +1,183 @@
-<!-- PESQUISA - Cole este código no bloco HTML do GreatPages -->
+<!-- PESQUISA COMPACTA - Cole este código no bloco HTML do GreatPages -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    .survey-container {
+    .survey-box {
         font-family: 'Montserrat', sans-serif;
         background: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        max-width: 500px;
         width: 100%;
         margin: 0 auto;
-        overflow: hidden;
+        padding: 30px;
     }
 
-    .survey-container * {
+    .survey-box * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
-    .survey-header {
-        background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-        color: white;
-        padding: 30px;
-        text-align: center;
-    }
-
-    .survey-header h1 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    .survey-header p {
-        font-size: 1rem;
-        opacity: 0.9;
-    }
-
-    .progress-container {
-        padding: 20px 30px;
-        background: #f8fafc;
-        border-bottom: 1px solid #e2e8f0;
-    }
-
-    .progress-bar {
-        height: 8px;
-        background: #e2e8f0;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #3182ce 0%, #2b6cb0 100%);
-        border-radius: 4px;
-        transition: width 0.4s ease;
-    }
-
-    .progress-text {
-        text-align: center;
-        margin-top: 10px;
-        font-size: 0.875rem;
-        color: #64748b;
-    }
-
-    .question-container {
-        padding: 30px;
-        min-height: 350px;
-    }
-
-    .survey-question {
+    .survey-q {
         display: none;
     }
 
-    .survey-question.active {
+    .survey-q.active {
         display: block;
-        animation: surveyFadeIn 0.3s ease;
+        animation: surveyFade 0.3s ease;
     }
 
-    @keyframes surveyFadeIn {
-        from { opacity: 0; transform: translateX(20px); }
-        to { opacity: 1; transform: translateX(0); }
+    @keyframes surveyFade {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    .survey-question h2 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #1a202c;
-        margin-bottom: 25px;
+    .survey-q h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 20px;
         line-height: 1.4;
     }
 
-    .survey-question h2 small {
+    .survey-q h2 small {
         font-size: 0.85rem;
         font-weight: 400;
-        color: #718096;
+        color: #666;
         display: block;
         margin-top: 5px;
     }
 
-    .survey-options {
+    .survey-opts {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+        margin-bottom: 25px;
     }
 
-    .survey-option {
+    .survey-opt {
         display: flex;
         align-items: center;
-        padding: 16px 20px;
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
         cursor: pointer;
-        transition: all 0.2s ease;
+        padding: 8px 0;
     }
 
-    .survey-option:hover {
-        border-color: #3182ce;
-        background: #f0f7ff;
-    }
-
-    .survey-option.selected {
-        border-color: #3182ce;
-        background: #ebf8ff;
-    }
-
-    .survey-option input[type="radio"],
-    .survey-option input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
-        margin-right: 15px;
-        accent-color: #3182ce;
+    .survey-opt input[type="radio"],
+    .survey-opt input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        margin-right: 12px;
+        accent-color: #00a8ff;
         cursor: pointer;
+        flex-shrink: 0;
     }
 
-    .survey-option label {
+    .survey-opt label {
         font-size: 1rem;
-        color: #2d3748;
+        color: #333;
         cursor: pointer;
-        flex: 1;
+        line-height: 1.3;
     }
 
-    .survey-text-input {
+    .survey-input {
         width: 100%;
-        padding: 16px 20px;
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
+        padding: 14px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
         font-size: 1rem;
         font-family: 'Montserrat', sans-serif;
-        transition: all 0.2s ease;
+        margin-bottom: 25px;
+        transition: border-color 0.2s;
     }
 
-    .survey-text-input:focus {
+    .survey-input:focus {
         outline: none;
-        border-color: #3182ce;
-        box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        border-color: #00a8ff;
     }
 
-    .survey-text-input::placeholder {
-        color: #a0aec0;
+    .survey-input::placeholder {
+        color: #999;
     }
 
-    textarea.survey-text-input {
-        min-height: 120px;
+    textarea.survey-input {
+        min-height: 100px;
         resize: vertical;
     }
 
-    .survey-navigation {
+    .survey-nav {
         display: flex;
-        justify-content: space-between;
-        padding: 20px 30px 30px;
-        gap: 15px;
+        gap: 12px;
     }
 
     .survey-btn {
-        padding: 16px 32px;
+        padding: 14px 28px;
         border: none;
         border-radius: 50px;
         font-size: 1rem;
-        font-weight: 600;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.2s ease;
         font-family: 'Montserrat', sans-serif;
+        transition: all 0.2s;
     }
 
-    .survey-btn-back {
-        background: #e2e8f0;
-        color: #4a5568;
+    .btn-back {
+        background: #f0f0f0;
+        color: #666;
     }
 
-    .survey-btn-back:hover {
-        background: #cbd5e0;
+    .btn-back:hover {
+        background: #e0e0e0;
     }
 
-    .survey-btn-back:disabled {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .survey-btn-next {
-        background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
-        color: white;
-        flex: 1;
-        max-width: 250px;
-        margin-left: auto;
-    }
-
-    .survey-btn-next:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(49, 130, 206, 0.4);
-    }
-
-    .survey-btn-next:disabled {
-        background: #a0aec0;
-        cursor: not-allowed;
-        transform: none;
-        box-shadow: none;
-    }
-
-    .survey-btn-submit {
-        background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
-    }
-
-    .survey-btn-submit:hover {
-        box-shadow: 0 4px 15px rgba(56, 161, 105, 0.4);
-    }
-
-    .survey-error-message {
-        color: #e53e3e;
-        font-size: 0.875rem;
-        margin-top: 10px;
+    .btn-back:disabled {
         display: none;
     }
 
-    .survey-error-message.show {
+    .btn-next {
+        background: #00a8ff;
+        color: white;
+        flex: 1;
+    }
+
+    .btn-next:hover {
+        background: #0095e0;
+        transform: translateY(-1px);
+    }
+
+    .btn-next:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .btn-next.btn-submit {
+        background: #25d366;
+    }
+
+    .btn-next.btn-submit:hover {
+        background: #20bd5a;
+    }
+
+    .survey-error {
+        color: #e53e3e;
+        font-size: 0.85rem;
+        margin-top: -15px;
+        margin-bottom: 15px;
+        display: none;
+    }
+
+    .survey-error.show {
         display: block;
     }
 
-    /* Modal de Agradecimento */
-    .survey-modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        padding: 20px;
-    }
-
-    .survey-modal-overlay.show {
-        display: flex;
-    }
-
-    .survey-modal {
-        background: white;
-        border-radius: 20px;
-        padding: 40px;
-        max-width: 500px;
-        width: 100%;
-        text-align: center;
-        animation: surveyModalIn 0.3s ease;
-        border: 4px solid #ffd700;
-    }
-
-    @keyframes surveyModalIn {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    .survey-modal h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #1a202c;
-        margin-bottom: 20px;
-    }
-
-    .survey-modal p {
-        color: #4a5568;
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-
-    .survey-btn-whatsapp {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-        color: white;
-        padding: 18px 30px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: all 0.2s ease;
-        width: 100%;
-    }
-
-    .survey-btn-whatsapp:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        color: white;
-    }
-
-    .survey-btn-whatsapp svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    /* Loading State */
     .survey-loading {
         display: none;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
     }
 
     .survey-loading.show {
@@ -328,512 +185,426 @@
     }
 
     .survey-spinner {
-        width: 20px;
-        height: 20px;
-        border: 3px solid #ffffff;
+        width: 18px;
+        height: 18px;
+        border: 3px solid #fff;
         border-top-color: transparent;
         border-radius: 50%;
-        animation: surveySpin 0.8s linear infinite;
+        animation: spin 0.8s linear infinite;
     }
 
-    @keyframes surveySpin {
+    @keyframes spin {
         to { transform: rotate(360deg); }
     }
 
-    /* Responsivo */
+    /* Modal */
+    .survey-modal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        padding: 20px;
+    }
+
+    .survey-modal-bg.show {
+        display: flex;
+    }
+
+    .survey-modal {
+        background: #fff;
+        border-radius: 16px;
+        padding: 35px;
+        max-width: 450px;
+        width: 100%;
+        text-align: center;
+        border: 4px solid #ffd700;
+    }
+
+    .survey-modal h2 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+    }
+
+    .survey-modal p {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .btn-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #25d366;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .btn-whatsapp:hover {
+        background: #20bd5a;
+        color: white;
+    }
+
+    .btn-whatsapp svg {
+        width: 22px;
+        height: 22px;
+    }
+
     @media (max-width: 480px) {
-        .survey-header h1 {
-            font-size: 1.4rem;
+        .survey-box {
+            padding: 25px 20px;
         }
-
-        .survey-question h2 {
+        .survey-q h2 {
             font-size: 1.1rem;
-        }
-
-        .survey-navigation {
-            flex-direction: column;
-        }
-
-        .survey-btn-next {
-            max-width: 100%;
-            margin-left: 0;
-        }
-
-        .survey-btn-back {
-            order: 2;
-        }
-
-        .survey-btn-back:disabled {
-            display: none;
         }
     }
 </style>
 
-<div class="survey-container">
-    <div class="survey-header">
-        <h1>Complete sua inscrição</h1>
-        <p>Responda às perguntas abaixo para garantir sua vaga</p>
-    </div>
-
-    <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress-fill" id="surveyProgressFill" style="width: 10%"></div>
-        </div>
-        <div class="progress-text">
-            Pergunta <span id="surveyCurrentQuestion">1</span> de <span id="surveyTotalQuestions">10</span>
-        </div>
-    </div>
-
-    <form id="surveyFormEmbed">
-        <div class="question-container">
-            <!-- Pergunta 1: Idade -->
-            <div class="survey-question active" data-question="1">
-                <h2>Quantos anos você tem?</h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="radio" name="idade" id="idadeEmbed1" value="Menos de 18 anos" required>
-                        <label for="idadeEmbed1">Menos de 18 anos</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="idade" id="idadeEmbed2" value="Entre 18 e 25 anos">
-                        <label for="idadeEmbed2">Entre 18 e 25 anos</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="idade" id="idadeEmbed3" value="Entre 26 e 30 anos">
-                        <label for="idadeEmbed3">Entre 26 e 30 anos</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="idade" id="idadeEmbed4" value="Entre 31 e 35 anos">
-                        <label for="idadeEmbed4">Entre 31 e 35 anos</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="idade" id="idadeEmbed5" value="Entre 36 e 40 anos">
-                        <label for="idadeEmbed5">Entre 36 e 40 anos</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="idade" id="idadeEmbed6" value="Entre 41 e 50 anos">
-                        <label for="idadeEmbed6">Entre 41 e 50 anos</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="idade" id="idadeEmbed7" value="Acima de 50 anos">
-                        <label for="idadeEmbed7">Acima de 50 anos</label>
-                    </div>
+<div class="survey-box">
+    <form id="surveyForm">
+        <!-- Pergunta 1 -->
+        <div class="survey-q active" data-q="1">
+            <h2>Quantos anos você tem?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="idade" id="idade1" value="Menos de 18 anos">
+                    <label for="idade1">Menos de 18 anos</label>
                 </div>
-                <p class="survey-error-message">Por favor, selecione uma opção para continuar.</p>
-            </div>
-
-            <!-- Pergunta 2: Gênero -->
-            <div class="survey-question" data-question="2">
-                <h2>Qual é o seu gênero?</h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="radio" name="genero" id="generoEmbed1" value="Masculino" required>
-                        <label for="generoEmbed1">Masculino</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="genero" id="generoEmbed2" value="Feminino">
-                        <label for="generoEmbed2">Feminino</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="genero" id="generoEmbed3" value="Prefiro não informar">
-                        <label for="generoEmbed3">Prefiro não informar</label>
-                    </div>
+                <div class="survey-opt">
+                    <input type="radio" name="idade" id="idade2" value="Entre 18 e 25 anos">
+                    <label for="idade2">Entre 18 e 25 anos</label>
                 </div>
-                <p class="survey-error-message">Por favor, selecione uma opção para continuar.</p>
-            </div>
-
-            <!-- Pergunta 3: Profissão -->
-            <div class="survey-question" data-question="3">
-                <h2>Qual é a sua profissão atual?</h2>
-                <input type="text" class="survey-text-input" name="profissao" placeholder="Ex: Empresário, Designer, Estudante..." required>
-                <p class="survey-error-message">Por favor, informe sua profissão para continuar.</p>
-            </div>
-
-            <!-- Pergunta 4: Renda -->
-            <div class="survey-question" data-question="4">
-                <h2>Qual é a sua faixa de renda mensal?</h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="radio" name="renda" id="rendaEmbed1" value="Até R$ 2.000" required>
-                        <label for="rendaEmbed1">Até R$ 2.000</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="renda" id="rendaEmbed2" value="R$ 2.001 a R$ 5.000">
-                        <label for="rendaEmbed2">R$ 2.001 a R$ 5.000</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="renda" id="rendaEmbed3" value="R$ 5.001 a R$ 10.000">
-                        <label for="rendaEmbed3">R$ 5.001 a R$ 10.000</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="renda" id="rendaEmbed4" value="R$ 10.001 a R$ 20.000">
-                        <label for="rendaEmbed4">R$ 10.001 a R$ 20.000</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="renda" id="rendaEmbed5" value="Acima de R$ 20.000">
-                        <label for="rendaEmbed5">Acima de R$ 20.000</label>
-                    </div>
+                <div class="survey-opt">
+                    <input type="radio" name="idade" id="idade3" value="Entre 26 e 30 anos">
+                    <label for="idade3">Entre 26 e 30 anos</label>
                 </div>
-                <p class="survey-error-message">Por favor, selecione uma opção para continuar.</p>
-            </div>
-
-            <!-- Pergunta 5: Experiência -->
-            <div class="survey-question" data-question="5">
-                <h2>Qual é o seu nível de experiência com o tema?</h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="radio" name="experiencia" id="expEmbed1" value="Iniciante - Estou começando agora" required>
-                        <label for="expEmbed1">Iniciante - Estou começando agora</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="experiencia" id="expEmbed2" value="Intermediário - Já tenho algum conhecimento">
-                        <label for="expEmbed2">Intermediário - Já tenho algum conhecimento</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="experiencia" id="expEmbed3" value="Avançado - Já atuo na área">
-                        <label for="expEmbed3">Avançado - Já atuo na área</label>
-                    </div>
+                <div class="survey-opt">
+                    <input type="radio" name="idade" id="idade4" value="Entre 31 e 35 anos">
+                    <label for="idade4">Entre 31 e 35 anos</label>
                 </div>
-                <p class="survey-error-message">Por favor, selecione uma opção para continuar.</p>
-            </div>
-
-            <!-- Pergunta 6: Objetivo -->
-            <div class="survey-question" data-question="6">
-                <h2>Qual é o seu principal objetivo ao participar?</h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="radio" name="objetivo" id="objEmbed1" value="Aumentar minha renda" required>
-                        <label for="objEmbed1">Aumentar minha renda</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="objetivo" id="objEmbed2" value="Começar um negócio próprio">
-                        <label for="objEmbed2">Começar um negócio próprio</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="objetivo" id="objEmbed3" value="Mudar de carreira">
-                        <label for="objEmbed3">Mudar de carreira</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="objetivo" id="objEmbed4" value="Escalar meu negócio atual">
-                        <label for="objEmbed4">Escalar meu negócio atual</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="objetivo" id="objEmbed5" value="Apenas aprender algo novo">
-                        <label for="objEmbed5">Apenas aprender algo novo</label>
-                    </div>
+                <div class="survey-opt">
+                    <input type="radio" name="idade" id="idade5" value="Entre 36 e 40 anos">
+                    <label for="idade5">Entre 36 e 40 anos</label>
                 </div>
-                <p class="survey-error-message">Por favor, selecione uma opção para continuar.</p>
-            </div>
-
-            <!-- Pergunta 7: Desafios (múltipla escolha) -->
-            <div class="survey-question" data-question="7">
-                <h2>Quais são seus maiores desafios atualmente? <small>(Selecione todos que se aplicam)</small></h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="checkbox" name="desafios" id="desEmbed1" value="Falta de tempo">
-                        <label for="desEmbed1">Falta de tempo</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="checkbox" name="desafios" id="desEmbed2" value="Falta de dinheiro para investir">
-                        <label for="desEmbed2">Falta de dinheiro para investir</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="checkbox" name="desafios" id="desEmbed3" value="Não sei por onde começar">
-                        <label for="desEmbed3">Não sei por onde começar</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="checkbox" name="desafios" id="desEmbed4" value="Medo de arriscar">
-                        <label for="desEmbed4">Medo de arriscar</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="checkbox" name="desafios" id="desEmbed5" value="Falta de conhecimento técnico">
-                        <label for="desEmbed5">Falta de conhecimento técnico</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="checkbox" name="desafios" id="desEmbed6" value="Dificuldade em vender">
-                        <label for="desEmbed6">Dificuldade em vender</label>
-                    </div>
+                <div class="survey-opt">
+                    <input type="radio" name="idade" id="idade6" value="Entre 41 e 50 anos">
+                    <label for="idade6">Entre 41 e 50 anos</label>
                 </div>
-                <p class="survey-error-message">Por favor, selecione pelo menos uma opção para continuar.</p>
-            </div>
-
-            <!-- Pergunta 8: Disponibilidade -->
-            <div class="survey-question" data-question="8">
-                <h2>Quantas horas por semana você pode dedicar aos estudos?</h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="radio" name="disponibilidade" id="dispEmbed1" value="Menos de 5 horas" required>
-                        <label for="dispEmbed1">Menos de 5 horas</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="disponibilidade" id="dispEmbed2" value="5 a 10 horas">
-                        <label for="dispEmbed2">5 a 10 horas</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="disponibilidade" id="dispEmbed3" value="10 a 20 horas">
-                        <label for="dispEmbed3">10 a 20 horas</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="disponibilidade" id="dispEmbed4" value="Mais de 20 horas">
-                        <label for="dispEmbed4">Mais de 20 horas</label>
-                    </div>
+                <div class="survey-opt">
+                    <input type="radio" name="idade" id="idade7" value="Acima de 50 anos">
+                    <label for="idade7">Acima de 50 anos</label>
                 </div>
-                <p class="survey-error-message">Por favor, selecione uma opção para continuar.</p>
             </div>
-
-            <!-- Pergunta 9: Investimento -->
-            <div class="survey-question" data-question="9">
-                <h2>Você estaria disposto(a) a investir em um treinamento completo se ele realmente trouxer resultados?</h2>
-                <div class="survey-options">
-                    <div class="survey-option">
-                        <input type="radio" name="investimento" id="invEmbed1" value="Sim, com certeza" required>
-                        <label for="invEmbed1">Sim, com certeza</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="investimento" id="invEmbed2" value="Sim, se o valor for acessível">
-                        <label for="invEmbed2">Sim, se o valor for acessível</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="investimento" id="invEmbed3" value="Talvez, preciso avaliar melhor">
-                        <label for="invEmbed3">Talvez, preciso avaliar melhor</label>
-                    </div>
-                    <div class="survey-option">
-                        <input type="radio" name="investimento" id="invEmbed4" value="Não no momento">
-                        <label for="invEmbed4">Não no momento</label>
-                    </div>
-                </div>
-                <p class="survey-error-message">Por favor, selecione uma opção para continuar.</p>
-            </div>
-
-            <!-- Pergunta 10: Expectativas -->
-            <div class="survey-question" data-question="10">
-                <h2>O que você espera alcançar nos próximos 12 meses?</h2>
-                <textarea class="survey-text-input" name="expectativas" placeholder="Descreva seus objetivos e sonhos para os próximos 12 meses..." required></textarea>
-                <p class="survey-error-message">Por favor, compartilhe suas expectativas para continuar.</p>
-            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
         </div>
 
-        <div class="survey-navigation">
-            <button type="button" class="survey-btn survey-btn-back" id="surveyBtnBack" disabled>VOLTAR</button>
-            <button type="button" class="survey-btn survey-btn-next" id="surveyBtnNext">
-                <span class="survey-btn-text">PRÓXIMA</span>
-                <span class="survey-loading">
-                    <span class="survey-spinner"></span>
-                    Enviando...
-                </span>
+        <!-- Pergunta 2 -->
+        <div class="survey-q" data-q="2">
+            <h2>Qual é o seu gênero?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="genero" id="genero1" value="Masculino">
+                    <label for="genero1">Masculino</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="genero" id="genero2" value="Feminino">
+                    <label for="genero2">Feminino</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="genero" id="genero3" value="Prefiro não informar">
+                    <label for="genero3">Prefiro não informar</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
+        </div>
+
+        <!-- Pergunta 3 -->
+        <div class="survey-q" data-q="3">
+            <h2>Qual é a sua profissão atual?</h2>
+            <input type="text" class="survey-input" name="profissao" placeholder="Ex: Empresário, Designer, Estudante...">
+            <p class="survey-error">Por favor, preencha este campo.</p>
+        </div>
+
+        <!-- Pergunta 4 -->
+        <div class="survey-q" data-q="4">
+            <h2>Qual é a sua faixa de renda mensal?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="renda" id="renda1" value="Até R$ 2.000">
+                    <label for="renda1">Até R$ 2.000</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="renda" id="renda2" value="R$ 2.001 a R$ 5.000">
+                    <label for="renda2">R$ 2.001 a R$ 5.000</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="renda" id="renda3" value="R$ 5.001 a R$ 10.000">
+                    <label for="renda3">R$ 5.001 a R$ 10.000</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="renda" id="renda4" value="R$ 10.001 a R$ 20.000">
+                    <label for="renda4">R$ 10.001 a R$ 20.000</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="renda" id="renda5" value="Acima de R$ 20.000">
+                    <label for="renda5">Acima de R$ 20.000</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
+        </div>
+
+        <!-- Pergunta 5 -->
+        <div class="survey-q" data-q="5">
+            <h2>Qual é o seu nível de experiência?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="experiencia" id="exp1" value="Iniciante">
+                    <label for="exp1">Iniciante - Estou começando agora</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="experiencia" id="exp2" value="Intermediário">
+                    <label for="exp2">Intermediário - Já tenho algum conhecimento</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="experiencia" id="exp3" value="Avançado">
+                    <label for="exp3">Avançado - Já atuo na área</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
+        </div>
+
+        <!-- Pergunta 6 -->
+        <div class="survey-q" data-q="6">
+            <h2>Qual é o seu principal objetivo?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="objetivo" id="obj1" value="Aumentar minha renda">
+                    <label for="obj1">Aumentar minha renda</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="objetivo" id="obj2" value="Começar um negócio próprio">
+                    <label for="obj2">Começar um negócio próprio</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="objetivo" id="obj3" value="Mudar de carreira">
+                    <label for="obj3">Mudar de carreira</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="objetivo" id="obj4" value="Escalar meu negócio atual">
+                    <label for="obj4">Escalar meu negócio atual</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="objetivo" id="obj5" value="Apenas aprender algo novo">
+                    <label for="obj5">Apenas aprender algo novo</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
+        </div>
+
+        <!-- Pergunta 7 (múltipla escolha) -->
+        <div class="survey-q" data-q="7">
+            <h2>Quais são seus maiores desafios? <small>(Selecione todos que se aplicam)</small></h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="checkbox" name="desafios" id="des1" value="Falta de tempo">
+                    <label for="des1">Falta de tempo</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="checkbox" name="desafios" id="des2" value="Falta de dinheiro para investir">
+                    <label for="des2">Falta de dinheiro para investir</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="checkbox" name="desafios" id="des3" value="Não sei por onde começar">
+                    <label for="des3">Não sei por onde começar</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="checkbox" name="desafios" id="des4" value="Medo de arriscar">
+                    <label for="des4">Medo de arriscar</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="checkbox" name="desafios" id="des5" value="Falta de conhecimento técnico">
+                    <label for="des5">Falta de conhecimento técnico</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="checkbox" name="desafios" id="des6" value="Dificuldade em vender">
+                    <label for="des6">Dificuldade em vender</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione pelo menos uma opção.</p>
+        </div>
+
+        <!-- Pergunta 8 -->
+        <div class="survey-q" data-q="8">
+            <h2>Quantas horas por semana pode dedicar?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="disponibilidade" id="disp1" value="Menos de 5 horas">
+                    <label for="disp1">Menos de 5 horas</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="disponibilidade" id="disp2" value="5 a 10 horas">
+                    <label for="disp2">5 a 10 horas</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="disponibilidade" id="disp3" value="10 a 20 horas">
+                    <label for="disp3">10 a 20 horas</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="disponibilidade" id="disp4" value="Mais de 20 horas">
+                    <label for="disp4">Mais de 20 horas</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
+        </div>
+
+        <!-- Pergunta 9 -->
+        <div class="survey-q" data-q="9">
+            <h2>Você investiria em um treinamento completo?</h2>
+            <div class="survey-opts">
+                <div class="survey-opt">
+                    <input type="radio" name="investimento" id="inv1" value="Sim, com certeza">
+                    <label for="inv1">Sim, com certeza</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="investimento" id="inv2" value="Sim, se o valor for acessível">
+                    <label for="inv2">Sim, se o valor for acessível</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="investimento" id="inv3" value="Talvez, preciso avaliar">
+                    <label for="inv3">Talvez, preciso avaliar</label>
+                </div>
+                <div class="survey-opt">
+                    <input type="radio" name="investimento" id="inv4" value="Não no momento">
+                    <label for="inv4">Não no momento</label>
+                </div>
+            </div>
+            <p class="survey-error">Por favor, selecione uma opção.</p>
+        </div>
+
+        <!-- Pergunta 10 -->
+        <div class="survey-q" data-q="10">
+            <h2>O que espera alcançar nos próximos 12 meses?</h2>
+            <textarea class="survey-input" name="expectativas" placeholder="Descreva seus objetivos..."></textarea>
+            <p class="survey-error">Por favor, preencha este campo.</p>
+        </div>
+
+        <div class="survey-nav">
+            <button type="button" class="survey-btn btn-back" id="btnBack" disabled>VOLTAR</button>
+            <button type="button" class="survey-btn btn-next" id="btnNext">
+                <span class="btn-text">PRÓXIMA</span>
+                <span class="survey-loading"><span class="survey-spinner"></span> Enviando...</span>
             </button>
         </div>
     </form>
 </div>
 
-<!-- Modal de Agradecimento -->
-<div class="survey-modal-overlay" id="surveyModalOverlay">
+<!-- Modal -->
+<div class="survey-modal-bg" id="surveyModal">
     <div class="survey-modal">
         <h2>Obrigado por responder!</h2>
         <p>Para completar a sua inscrição e participar do curso gratuito, clique no botão abaixo e confirme sua inscrição pelo WhatsApp.</p>
-        <a href="https://wa.me/5511999999999?text=Quero%20confirmar%20minha%20inscri%C3%A7%C3%A3o%20e%20receber%20os%20materiais" class="survey-btn-whatsapp" target="_blank">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            QUERO CONFIRMAR MINHA INSCRIÇÃO
+        <a href="https://wa.me/5511999999999?text=Quero%20confirmar%20minha%20inscri%C3%A7%C3%A3o" class="btn-whatsapp" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            CONFIRMAR INSCRIÇÃO
         </a>
     </div>
 </div>
 
 <script>
 (function() {
-    // Configuração do Webhook - SUBSTITUA PELA SUA URL DO N8N
     const WEBHOOK_URL = 'SUA_URL_DO_WEBHOOK_N8N';
 
-    // Elementos do DOM
-    const form = document.getElementById('surveyFormEmbed');
-    const questions = document.querySelectorAll('.survey-question');
-    const btnNext = document.getElementById('surveyBtnNext');
-    const btnBack = document.getElementById('surveyBtnBack');
-    const progressFill = document.getElementById('surveyProgressFill');
-    const currentQuestionSpan = document.getElementById('surveyCurrentQuestion');
-    const totalQuestionsSpan = document.getElementById('surveyTotalQuestions');
-    const modalOverlay = document.getElementById('surveyModalOverlay');
+    const form = document.getElementById('surveyForm');
+    const questions = document.querySelectorAll('.survey-q');
+    const btnNext = document.getElementById('btnNext');
+    const btnBack = document.getElementById('btnBack');
+    const modal = document.getElementById('surveyModal');
 
-    let currentQuestion = 1;
-    const totalQuestions = questions.length;
+    let current = 1;
+    const total = questions.length;
 
-    totalQuestionsSpan.textContent = totalQuestions;
-
-    function updateProgress() {
-        const progress = (currentQuestion / totalQuestions) * 100;
-        progressFill.style.width = progress + '%';
-        currentQuestionSpan.textContent = currentQuestion;
+    function show(n) {
+        questions.forEach(q => q.classList.remove('active'));
+        document.querySelector('[data-q="'+n+'"]').classList.add('active');
+        btnBack.disabled = n === 1;
+        btnNext.querySelector('.btn-text').textContent = n === total ? 'ENVIAR' : 'PRÓXIMA';
+        btnNext.classList.toggle('btn-submit', n === total);
     }
 
-    function showQuestion(questionNumber) {
-        questions.forEach(function(q) { q.classList.remove('active'); });
-        const targetQuestion = document.querySelector('[data-question="' + questionNumber + '"]');
-        if (targetQuestion) {
-            targetQuestion.classList.add('active');
+    function validate() {
+        const q = document.querySelector('.survey-q.active');
+        const err = q.querySelector('.survey-error');
+        const radios = q.querySelectorAll('input[type="radio"]');
+        const checks = q.querySelectorAll('input[type="checkbox"]');
+        const text = q.querySelector('.survey-input');
+
+        if (radios.length && !Array.from(radios).some(r => r.checked)) {
+            err.classList.add('show'); return false;
         }
-
-        btnBack.disabled = questionNumber === 1;
-
-        if (questionNumber === totalQuestions) {
-            btnNext.querySelector('.survey-btn-text').textContent = 'ENVIAR';
-            btnNext.classList.add('survey-btn-submit');
-        } else {
-            btnNext.querySelector('.survey-btn-text').textContent = 'PRÓXIMA';
-            btnNext.classList.remove('survey-btn-submit');
+        if (checks.length && !Array.from(checks).some(c => c.checked)) {
+            err.classList.add('show'); return false;
         }
-
-        updateProgress();
-    }
-
-    function validateCurrentQuestion() {
-        const activeQuestion = document.querySelector('.survey-question.active');
-        const errorMessage = activeQuestion.querySelector('.survey-error-message');
-
-        const radios = activeQuestion.querySelectorAll('input[type="radio"]');
-        if (radios.length > 0) {
-            const isChecked = Array.from(radios).some(function(radio) { return radio.checked; });
-            if (!isChecked) {
-                errorMessage.classList.add('show');
-                return false;
-            }
+        if (text && !text.value.trim()) {
+            err.classList.add('show'); return false;
         }
-
-        const checkboxes = activeQuestion.querySelectorAll('input[type="checkbox"]');
-        if (checkboxes.length > 0) {
-            const isChecked = Array.from(checkboxes).some(function(cb) { return cb.checked; });
-            if (!isChecked) {
-                errorMessage.classList.add('show');
-                return false;
-            }
-        }
-
-        const textInputs = activeQuestion.querySelectorAll('.survey-text-input');
-        if (textInputs.length > 0) {
-            const isEmpty = Array.from(textInputs).some(function(input) { return input.value.trim() === ''; });
-            if (isEmpty) {
-                errorMessage.classList.add('show');
-                return false;
-            }
-        }
-
-        errorMessage.classList.remove('show');
+        err.classList.remove('show');
         return true;
     }
 
-    function collectFormData() {
-        const formData = {};
-
-        const radios = form.querySelectorAll('input[type="radio"]:checked');
-        radios.forEach(function(radio) {
-            formData[radio.name] = radio.value;
-        });
-
-        const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+    function collect() {
+        const data = {};
+        form.querySelectorAll('input[type="radio"]:checked').forEach(r => data[r.name] = r.value);
         const desafios = [];
-        checkboxes.forEach(function(cb) {
-            desafios.push(cb.value);
-        });
-        if (desafios.length > 0) {
-            formData['desafios'] = desafios;
-        }
-
-        const textInputs = form.querySelectorAll('.survey-text-input');
-        textInputs.forEach(function(input) {
-            if (input.value.trim()) {
-                formData[input.name] = input.value.trim();
-            }
-        });
-
-        formData['data_envio'] = new Date().toISOString();
-
-        return formData;
+        form.querySelectorAll('input[type="checkbox"]:checked').forEach(c => desafios.push(c.value));
+        if (desafios.length) data.desafios = desafios;
+        form.querySelectorAll('.survey-input').forEach(i => { if(i.value.trim()) data[i.name] = i.value.trim(); });
+        data.data_envio = new Date().toISOString();
+        return data;
     }
 
-    async function sendToWebhook(data) {
-        try {
-            const response = await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
-            return true;
-        } catch (error) {
-            console.error('Erro no webhook:', error);
-            return true;
-        }
+    function loading(on) {
+        btnNext.querySelector('.btn-text').style.display = on ? 'none' : 'inline';
+        btnNext.querySelector('.survey-loading').classList.toggle('show', on);
+        btnNext.disabled = on;
     }
 
-    function setLoading(isLoading) {
-        const btnText = btnNext.querySelector('.survey-btn-text');
-        const loading = btnNext.querySelector('.survey-loading');
-
-        if (isLoading) {
-            btnText.style.display = 'none';
-            loading.classList.add('show');
-            btnNext.disabled = true;
-        } else {
-            btnText.style.display = 'inline';
-            loading.classList.remove('show');
-            btnNext.disabled = false;
-        }
-    }
-
-    document.querySelectorAll('.survey-option').forEach(function(option) {
-        option.addEventListener('click', function() {
+    document.querySelectorAll('.survey-opt').forEach(opt => {
+        opt.addEventListener('click', function() {
             const input = this.querySelector('input');
-
-            if (input.type === 'radio') {
-                const name = input.name;
-                document.querySelectorAll('input[name="' + name + '"]').forEach(function(radio) {
-                    radio.closest('.survey-option').classList.remove('selected');
-                });
-                this.classList.add('selected');
-                input.checked = true;
-            } else if (input.type === 'checkbox') {
-                input.checked = !input.checked;
-                this.classList.toggle('selected', input.checked);
-            }
-
-            const activeQuestion = document.querySelector('.survey-question.active');
-            const errorMessage = activeQuestion.querySelector('.survey-error-message');
-            errorMessage.classList.remove('show');
+            if (input.type === 'radio') input.checked = true;
+            else input.checked = !input.checked;
+            document.querySelector('.survey-q.active .survey-error').classList.remove('show');
         });
     });
 
     btnNext.addEventListener('click', async function() {
-        if (!validateCurrentQuestion()) {
-            return;
-        }
-
-        if (currentQuestion < totalQuestions) {
-            currentQuestion++;
-            showQuestion(currentQuestion);
-        } else {
-            setLoading(true);
-            const formData = collectFormData();
-            await sendToWebhook(formData);
-            setLoading(false);
-            modalOverlay.classList.add('show');
+        if (!validate()) return;
+        if (current < total) { current++; show(current); }
+        else {
+            loading(true);
+            try { await fetch(WEBHOOK_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(collect()) }); } catch(e) {}
+            loading(false);
+            modal.classList.add('show');
         }
     });
 
-    btnBack.addEventListener('click', function() {
-        if (currentQuestion > 1) {
-            currentQuestion--;
-            showQuestion(currentQuestion);
-        }
-    });
+    btnBack.addEventListener('click', function() { if (current > 1) { current--; show(current); } });
 
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
-            e.preventDefault();
-            btnNext.click();
-        }
-    });
-
-    showQuestion(1);
+    show(1);
 })();
 </script>
